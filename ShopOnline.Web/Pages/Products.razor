@@ -1,0 +1,18 @@
+﻿@page "/"
+@using ShopOnline.Models.Dtos
+
+@if(ProductList == null){
+    <h3>Loading Products...</h3>
+}
+else{
+    <h3 class="mb-5">Products</h3>
+    var productCount = ProductList.Count();
+
+    if(productCount > 0){
+         int itemPerRow = 4;
+
+         var products = new List<ProductDto>();
+
+        
+    }
+}
