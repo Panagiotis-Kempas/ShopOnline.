@@ -1,18 +1,26 @@
 ﻿@page "/"
 @using ShopOnline.Models.Dtos
 
-@if(ProductList == null){
+@if (ProductList == null)
+{
     <h3>Loading Products...</h3>
 }
-else{
+else
+{
     <h3 class="mb-5">Products</h3>
     var productCount = ProductList.Count();
 
-    if(productCount > 0){
-         int itemPerRow = 4;
+    @if (productCount > 0)
+    {
+            @foreach (var prodGroup in GetGroupedProducts())
+            {
+                <h4>@GetCategoryName(prodGroup)</h4>
 
-         var products = new List<ProductDto>();
-
-        
+                <div class="row mt-3">
+                <DisplayProducts Products="@prodGroup.Take(4)"></DisplayProducts>
+                </div>
+                <hr class="mb-3"/>
+            }       
+        }
     }
 }
